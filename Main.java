@@ -1,27 +1,72 @@
 import java.util.ArrayList;
+import java.util.InputMismatchException;
 import java.util.List;
+import java.util.Scanner;
 
 public class Main {
-    public static void main (String[] args) {
+    public static void main(String[] args) {
+        Company company = Utils.initdata();
 
-        Person firstPerson = new Person("Natalia", "Test");
-        Employee firstEmployee = new Employee(firstPerson, Departament.SALES);
+        String title = "Panel administracyjny firmy" + company.getName();
 
-        Person secondPerson = new Person("Julia", "Przykladowa");
-        Employee secondEmployee = new Employee(secondPerson, Departament.SALES);
+        System.out.println("-".repeat(title.length()));
+        System.out.println(title);
+        System.out.println("-".repeat(title.length()));
 
-        Person thirdPerson = new Person("Urszula", "Demo");
-        Employee thirdEmployee = new Employee(thirdPerson, Departament.ADMINISTRATION);
+        int number;
 
-        Company company = new Company("Firma");
-        List<Employee> employees = company.getEmployees();
-        employees.add(firstEmployee);
-        employees.add(secondEmployee);
-        employees.add(thirdEmployee);
 
-        for (int i = 0; i < company.getEmployees().size(); i++){
-            System.out.println(employees.get(i).toString());
+        System.out.println("Wybierz opcje");
+        System.out.println("1. Wyswietl liste pracownikow");
+        System.out.println("0. Zamknij program");
+
+        boolean done = false;
+
+        while (!done) {
+
+            try {
+
+                Scanner input = new Scanner(System.in);
+                System.out.println("Podaj numer opcji");
+                number = input.nextInt();
+
+                switch (number) {
+                    case 1:
+                        for (int i = 0; i < company.getEmployees().size(); i++) {
+                            System.out.println(company.getEmployees().get(i).toString());
+                        }
+                        break;
+
+                    case  0:
+                        System.out.println("Program zostaje zamkniety");
+                        break;
+
+                    default:
+                        System.out.println("Podano zly numer opcji");
+
+                }
+                done = true;
+
+            } catch (InputMismatchException e) {
+                System.out.println("Podana opcja nie istnieje");
+            }
         }
+
+    }
+}
+
+
+
+
+
+
+
+//        for (int i = 0; i < company.getEmployees().size(); i++){
+//            System.out.println(company.getEmployees().get(i).toString());
+//        }
+
+//CRUD - CREATE, READ, UPDATE, DELETE
+
 
 
 
@@ -39,6 +84,5 @@ public class Main {
 //        }
 
 
-   }
-}
+
 
