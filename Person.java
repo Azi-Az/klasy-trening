@@ -27,5 +27,11 @@ public class Person {
         System.out.println(surname);
 
     }
+
+    @Override
+    public String toString() {
+        return name + " " + surname;
+    }
+
 }
 
