@@ -1,3 +1,6 @@
+import java.util.ArrayList;
+import java.util.List;
+
 public class Main {
     public static void main (String[] args) {
         Person firstPerson = new Person("Natalia", "Test");
@@ -9,10 +12,13 @@ public class Main {
         Person thirdPerson = new Person("Urszula", "Demo");
         Employee thirdEmployee = new Employee(thirdPerson, Departament.ADMINISTRATION);
 
-        System.out.println(firstEmployee);
-        System.out.println(secondEmployee);
-        System.out.println(thirdEmployee);
+        List<Employee> employees = new ArrayList<>();
 
-    }
+        employees.add(firstEmployee);
+        employees.add(secondEmployee);
+        employees.add(thirdEmployee);
+
+        System.out.println(employees);
+   }
 }
 
